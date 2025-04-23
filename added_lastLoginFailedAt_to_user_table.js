@@ -4,16 +4,15 @@ const { Sequelize, DataTypes } = require('/app/node_modules/sequelize');
 module.exports = {
   async up({ context: queryInterface }) {
     await queryInterface.addColumn(
-      'TRANSACTIONS', // Table name
-      'ISPRECOMPED', // New column name
+      'USERS', // Table name
+      'LASTLOGINFAILEDAT', // New column name
       {
-        type: Sequelize.BOOLEAN, // Data type (adjust if necessary)
-        defaultValue: false, // Default value
-        allowNull: false, // Ensuring it is not null
+        type: Sequelize.DATE, // Data type (adjust if necessary)
       }
     );
   },
+
   async down({ context: queryInterface }) {
-    await queryInterface.removeColumn('TRANSACTIONS', 'ISPRECOMPED');
+    await queryInterface.removeColumn('USERS', 'LASTLOGINFAILEDAT');
   },
 };
