@@ -5,15 +5,15 @@ module.exports = {
   async up({ context: queryInterface }) {
     await queryInterface.addColumn(
       'TRANSACTIONS', // Table name
-      'receiptViewCount', // New column name receiptViewCount
+      'ISPRECOMPED', // New column name
       {
-        type: Sequelize.INTEGER, // Data type (adjust if necessary)
-        defaultValue: 0, // Default value
+        type: Sequelize.BOOLEAN, // Data type (adjust if necessary)
+        defaultValue: false, // Default value
         allowNull: false, // Ensuring it is not null
       }
     );
   },
   async down({ context: queryInterface }) {
-    await queryInterface.removeColumn('TRANSACTIONS', 'receiptViewCount');
+    await queryInterface.removeColumn('TRANSACTIONS', 'ISPRECOMPED');
   },
 };
